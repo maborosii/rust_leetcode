@@ -26,4 +26,17 @@ impl Solution {
         }
         a
     }
+    // more efficient
+    pub fn two_sum_other(nums: Vec<i32>, target: i32) -> Vec<i32> {
+        let mut map = HashMap::with_capacity(nums.len());
+
+        for (i, &num) in nums.iter().enumerate() {
+            if let Some(&other) = map.get(&(target - num)) {
+                return vec![other as i32, i as i32];
+            }
+            map.insert(num, i);
+        }
+
+        panic!()
+    }
 }
